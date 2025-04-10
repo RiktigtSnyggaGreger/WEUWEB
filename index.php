@@ -18,7 +18,7 @@
             </li>
         </ul>
     </nav>
-
+    
     <div class="main">
         <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
