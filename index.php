@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+    
+    ?>
     <nav class="navbar">
         <ul class="nav-links">
             <li>
