@@ -67,3 +67,36 @@ footer {
     list-style: none;
     
 }
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        display: grid;
+        grid-template-areas:
+            "navbar"
+            "sidebar"
+            "footer";
+    }
+        .menu-button {
+            display: block;
+        }
+        .navbar ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+        }
+        .navbar ul.show {
+            display: flex;
+        }
+        .navbar li {
+            margin: 10px;
+        }
+    }

@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script src="script.js"></script>
+<script>
+    function toggleMenu() {
+        document.querySelector("nav ul").classList.toggle("show");
+    }
+</script>
     <?php
     
     ?>
     <nav class="navbar">
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
         <ul class="nav-links">
             <li>
                 <a href="#">1970</a>
@@ -21,6 +26,7 @@
                 <a href="#">2010</a>
             </li>
         </ul>
+        
     </nav>
     
     <div class="main">
