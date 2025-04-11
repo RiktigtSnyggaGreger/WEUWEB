@@ -15,7 +15,21 @@
     <?php
     
     ?>
+
+
+
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("light-mode");
+}
+</script>
+
+</body>
+</html>
+
     <nav class="navbar">
+
         <button class="menu-button" onclick="toggleMenu()">☰</button>
         <ul class="nav-links">
             <li>
@@ -23,7 +37,8 @@
                 <a href="#">1980</a>
                 <a href="#">1990</a>
                 <a href="#">2000</a>
-                <a href="#">2010</a>
+                <a href="#">2010</a>        
+                <button onclick="myFunction()">Byt färgschema</button>   
             </li>
         </ul>
         
@@ -35,7 +50,7 @@
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
-            
+                    
         </p>
     </div>
     <img src="img/lassestefanzbild.jpeg">
@@ -45,7 +60,8 @@
             <li>Lasse Stefanz</li>
             <li>Sven-Ingvars</li>
             <li>Vikingarna</li>
-        </ol>
+        </ol> 
+
     </div>
     
 
