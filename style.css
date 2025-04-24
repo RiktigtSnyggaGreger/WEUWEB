@@ -1,6 +1,6 @@
 body {
     background-color: rgb(123, 131, 201);
-    color: #9076a8;
+    color: hsl(0, 0%, 100%);
     display: grid;
     grid-template-columns: auto, auto;
     grid-template-rows: auto, auto, auto, auto;
