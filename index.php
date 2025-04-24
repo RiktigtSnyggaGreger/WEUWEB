@@ -37,7 +37,8 @@ function myFunction() {
                 <a href="#">1980</a>
                 <a href="#">1990</a>
                 <a href="#">2000</a>
-                <a href="#">2010</a>        
+                <a href="#">2010</a>
+                <a href="about.html">Om oss</a>        
                 <button onclick="myFunction()">Byt färgschema</button>   
             </li>
         </ul>
