@@ -1,3 +1,14 @@
+<?php
+$servername = "localhost";
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
+
+$conn = mysqli_connect($servername, $username, $password);
+mysqli_select_db($conn, "ntigskov_danzuser");
+    if($conn->connect_error){
+        die("connection Failed  : ".$conn->connect_error);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +23,6 @@
         document.querySelector("nav ul").classList.toggle("show");
     }
 </script>
-    <?php
-    
-    ?>
-
-
 
 <script>
 function myFunction() {
