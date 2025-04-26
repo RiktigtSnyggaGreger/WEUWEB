@@ -4,11 +4,25 @@ $username = "root";
 $password = "";
 
 $conn = mysqli_connect($servername, $username, $password);
-mysqli_select_db($conn, "ntigskov_danzuser");
+mysqli_select_db($conn, "ntigskov_danzos");
     if($conn->connect_error){
         die("connection Failed  : ".$conn->connect_error);
     }
+
+    $query = "SELECT * FROM bands";
+    $result = mysqli_query($conn, $query);
+    echo"Här kan du se vad folk heter:" . "<br>";
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) { 
+
+            echo $row["band_name_sc"] . "<br>"; 
+        }
+    } else {
+        echo "Query failed: " . mysqli_error($conn); // Debug
+    }
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
