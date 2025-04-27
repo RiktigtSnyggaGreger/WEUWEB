@@ -29,6 +29,20 @@ if (isset($_GET['id'])) {
     echo "No band ID provided.";
     exit();
 }
+if (isset($_GET['hit_id'])) {
+    $hitId = $_GET['hit_id'];
+
+    $query = "SELECT * FROM top_hits WHERE hit_id = $hitId";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        if (mysqli_num_rows($result) > 0) {
+            $hit = mysqli_fetch_assoc($result);
+        }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +70,17 @@ if (isset($_GET['id'])) {
     <p></p>
 </div>
 
+
 <div class="sidebar">
-    <ol>
-    </ol> 
+<ol>
+    <?php if (isset($hit)) { ?>
+        <li>
+            <?php echo $hit['song_title']; ?> (<?php echo $hit['release_year']; ?>)
+        </li>
+    <?php } else { ?>
+        <li>Inga hits hittades.</li>
+    <?php } ?>
+</ol> 
 </div>
 
 <footer>

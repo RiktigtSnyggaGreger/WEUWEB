@@ -49,7 +49,8 @@ $result = mysqli_query($conn, $query);
             ?>
  
          </div>
-    </div>                  
+    </div>            
+      
             <button onclick="myFunction()">Byt färgschema</button>     
         </li>
     </ul>
