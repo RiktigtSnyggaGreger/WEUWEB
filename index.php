@@ -6,7 +6,7 @@ $password = "";
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    echo(det funka inte);
 }
 
 $query = "SELECT * FROM bands";
