@@ -4,11 +4,8 @@
 $servername = "localhost";
 $username = "ntigskov_danzuser";
 $password = "N)yrw4(V~%,h";
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 8fd2f7a45daec65bb1f2c5fe2b0ddb957b4de689
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
