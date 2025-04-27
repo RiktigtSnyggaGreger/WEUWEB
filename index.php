@@ -1,12 +1,14 @@
 <?php
+
+// Databas connection
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
 if ($conn->connect_error) {
-    echo(det funka inte);
+    echo("det funka inte");
 }
 
 $query = "SELECT * FROM bands";
@@ -23,20 +25,42 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 <script>
-    function toggleMenu() {
-        document.querySelector("nav ul").classList.toggle("show");
-    }
     function myFunction() {
-       var element = document.body;
-       element.classList.toggle("light-mode");
+        var element = document.body;
+        element.classList.toggle("light-mode");
+
+        document.querySelector(".navbar").classList.toggle("light-mode");
+        document.querySelector(".sidebar").classList.toggle("light-mode");
+
+        // Change text color in the sidebar
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarParagraph = sidebar.querySelector("p");
+        var sidebarListItems = sidebar.querySelectorAll("li");
+
+        if (element.classList.contains("light-mode")) {
+            sidebar.style.color = "black"; 
+            if (sidebarParagraph) {
+                sidebarParagraph.style.color = "black"; 
+            }
+            sidebarListItems.forEach(function (item) {
+                item.style.color = "black";
+            });
+        } else {
+            sidebar.style.color = "";
+            if (sidebarParagraph) {
+                sidebarParagraph.style.color = ""; 
+            }
+            sidebarListItems.forEach(function (item) {
+                item.style.color = ""; 
+            });
+        }
     }
 </script>
-
 <nav class="navbar">
     <ul class="nav-links">
         <li>    
     <div class="dropdown">
-    <button class="dropbtn">Dropdown</button>
+    <button class="dropbtn">Meny</button>
     <div class="dropdown-content">
             <?php
     if ($result) {
@@ -51,18 +75,30 @@ $result = mysqli_query($conn, $query);
          </div>
     </div>            
       
-            <button onclick="myFunction()">Byt färgschema</button>     
+            <button id="darkButton" onclick="myFunction()">Byt färgschema</button>     
         </li>
     </ul>
 </nav>
 
 <div class="main">
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. ...
+    
+    <p>Välkommen till vår hemsida! Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
+        Oavsett om du är en trogen fan av Lasse Stefanz, Sven-Ingvars, Vikingarna eller bara är nyfiken på att utforska den 
+        svenska dansbandskulturen, så har vi något för dig. </p>
+
+        <p>På vår sida hittar du information om de största banden, deras historia, och deras mest populära låtar. Du kan också 
+        hålla dig uppdaterad med de senaste nyheterna och evenemangen inom dansbandsvärlden. Vi har dessutom en topplista 
+        över de mest populära banden i Sverige just nu, så att du alltid vet vilka som är hetast på dansgolvet.</p>
+
+        <p>Utforska vår meny för att läsa mer om dina favoritband, och glöm inte att kolla in våra bilder och artiklar för att 
+        få en djupare inblick i denna fantastiska musikgenre. Vi hoppas att du kommer att trivas här och att vår hemsida 
+        blir din go-to-plats för allt som rör dansband!</p>
+
+        <p>Tack för att du besöker oss, och vi önskar dig en fantastisk upplevelse!</p>
     </p>
 </div>
 
-<img src="img/lassestefanzbild.jpeg">
+<img src="img/dansband2.jpg" alt="Dansband">
 
 <div class="sidebar">
     <ol>
@@ -70,21 +106,13 @@ $result = mysqli_query($conn, $query);
         <li>Lasse Stefanz</li>
         <li>Sven-Ingvars</li>
         <li>Vikingarna</li>
+        <li>Arvingarna</li>
+        <li>Flamingo Personerna</li>
+        <li>Dansbandskungen!</li>
+        <li>Nån nobody</li>
     </ol> 
 </div>
 
-<footer>
-    <p>&copy; 2025 DansBandsKungarna. All rights reserved.</p>
-    <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="#">Random Website</a></li>
-        <li><a href="#">Contact Us</a></li>
-    </ul>
-    <p>Follow us on:</p>
-    <ul class="social-links">
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Instagram</a></li>
-    </ul>
-</footer>
+
 </body>
 </html>
