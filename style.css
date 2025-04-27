@@ -80,13 +80,7 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-    body{
-        display: grid;
-        grid-template-areas:
-            "navbar"
-            "sidebar"
-            "footer";
-    }
+
         .menu-button {
             display: block;
         }
