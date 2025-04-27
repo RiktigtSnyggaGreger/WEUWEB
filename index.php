@@ -5,22 +5,12 @@ $password = "";
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
-    if($conn->connect_error){
-        die("connection Failed  : ".$conn->connect_error);
-    }
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    $query = "SELECT * FROM bands";
-    $result = mysqli_query($conn, $query);
-    echo"Här kan du se vad folk heter:" . "<br>";
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) { 
-
-            echo $row["band_name_sc"] . "<br>"; 
-        }
-    } else {
-        echo "Query failed: " . mysqli_error($conn); // Debug
-    }
-    
+$query = "SELECT * FROM bands";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -36,68 +26,67 @@ mysqli_select_db($conn, "ntigskov_danzos");
     function toggleMenu() {
         document.querySelector("nav ul").classList.toggle("show");
     }
+    function myFunction() {
+       var element = document.body;
+       element.classList.toggle("light-mode");
+    }
 </script>
 
-<script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("light-mode");
-}
-</script>
+<nav class="navbar">
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links">
+        <li>
+            <?php
 
-</body>
-</html>
 
-    <nav class="navbar">
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $bandId = $row["band_id"];
+            $bandName = $row["band_name_sv"];
+            echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+        }
+    }
 
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links">
-            <li>
-                <a href="#">1970</a>
-                <a href="#">1980</a>
-                <a href="#">1990</a>
-                <a href="#">2000</a>
-                <a href="#">2010</a>
-                <a href="about.html">Om oss</a>        
-                <button onclick="myFunction()">Byt färgschema</button>   
-            </li>
-        </ul>
-        
-    </nav>
-    
-    <div class="main">
-        <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. Rerum ab error assumenda esse accusamus totam reprehenderit adipisci deserunt neque praesentium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde explicabo ex tempore vitae molestiae atque? Voluptatibus harum praesentium sequi laboriosam est, veniam vel id ipsum quia esse ex incidunt saepe?
-                    
-        </p>
-    </div>
-    <img src="img/lassestefanzbild.jpeg">
-    <div class="sidebar">
-        <ol>
-            <p>Top Sverige Idag!</p>
-            <li>Lasse Stefanz</li>
-            <li>Sven-Ingvars</li>
-            <li>Vikingarna</li>
-        </ol> 
 
-    </div>
-    
+else {
+                echo "<p>No bands found.</p>";
+            }
+            ?>
+            <a href="about.html">Om oss</a>        
+            <button onclick="myFunction()">Byt färgschema</button>   
+        </li>
+    </ul>
+</nav>
 
-    <footer>
-        <p>&copy; 2025 DansBandsKungarna. All rights reserved.</p>
-        <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="#">Random Webstie</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-        <p>Follow us on:</p>
-        <ul class="social-links">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
-        </ul>
-    </footer>
+<div class="main">
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit qui ratione eum quia, maxime excepturi minus sequi quo. ...
+    </p>
+</div>
+
+<img src="img/lassestefanzbild.jpeg">
+
+<div class="sidebar">
+    <ol>
+        <p>Top Sverige Idag!</p>
+        <li>Lasse Stefanz</li>
+        <li>Sven-Ingvars</li>
+        <li>Vikingarna</li>
+    </ol> 
+</div>
+
+<footer>
+    <p>&copy; 2025 DansBandsKungarna. All rights reserved.</p>
+    <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Random Website</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p>Follow us on:</p>
+    <ul class="social-links">
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+    </ul>
+</footer>
 </body>
 </html>
