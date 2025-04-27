@@ -49,11 +49,16 @@ if (isset($_GET['id'])) {
 <div class="main">
     <h1><?php echo $band['band_name_sv']; ?></h1>
 
-    <p>Bandet skapades: <?php echo $band['formation_year']; ?></p>
+    <p><?php echo $band['band_name_sv'];  '. ' ?> Skapades: <?php echo $band['formation_year']; ?></p>
     
-    <img src="img/<?php echo $band['picture']; ?>" alt="<?php echo $band['band_name_sv']; ?>"
+    <img src="img/<?php echo $band['picture'];?>">
 
     <p></p>
+</div>
+
+<div class="sidebar">
+    <ol>
+    </ol> 
 </div>
 
 <footer>
