@@ -33,12 +33,12 @@ $result = mysqli_query($conn, $query);
 </script>
 
 <nav class="navbar">
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
     <ul class="nav-links">
-        <li>
+        <li>    
+    <div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
             <?php
-
-
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $bandId = $row["band_id"];
@@ -46,14 +46,11 @@ $result = mysqli_query($conn, $query);
             echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
         }
     }
-
-
-else {
-                echo "<p>No bands found.</p>";
-            }
             ?>
-            <a href="about.html">Om oss</a>        
-            <button onclick="myFunction()">Byt färgschema</button>   
+ 
+         </div>
+    </div>                  
+            <button onclick="myFunction()">Byt färgschema</button>     
         </li>
     </ul>
 </nav>
