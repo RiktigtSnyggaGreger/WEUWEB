@@ -76,7 +76,7 @@ $result = mysqli_query($conn, $query);
     </div>            
       
             <button id="darkButton" onclick="myFunction()">Byt färgschema</button> 
-            <a href="about.html">Om oss</a>    
+            <a id="aboutme" href="about.html">Om oss</a>    
         </li>
     </ul>
 </nav>
@@ -112,6 +112,8 @@ $result = mysqli_query($conn, $query);
         <li>Dansbandskungen!</li>
         <li>Nån nobody</li>
     </ol> 
+
+    
 </div>
 
 
