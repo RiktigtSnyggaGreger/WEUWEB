@@ -1,7 +1,11 @@
 <?php
+
+// Databas connection
 $servername = "localhost";
 $username = "root";
 $password = "";
+
+
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
@@ -42,7 +46,8 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
 <body>
 
 <nav class="navbar">
-    <a href="index.php">Tillbaka till startsidan</a>
+    <a id="sendback" href="index.php">Tillbaka till startsidan</a>
+    
 </nav>
 
 <div class="main">
