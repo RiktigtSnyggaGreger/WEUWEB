@@ -51,6 +51,8 @@ if (isset($_GET['id'])) {
 
     <p>Bandet skapades: <?php echo $band['formation_year']; ?></p>
     
+    <img src="img/<?php echo $band['picture']; ?>" alt="<?php echo $band['band_name_sv']; ?>"
+
     <p></p>
 </div>
 
