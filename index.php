@@ -25,6 +25,7 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 <script>
+    /*Funktion för lightmode*/ 
     function myFunction() {
         var element = document.body;
         element.classList.toggle("light-mode");
@@ -36,7 +37,7 @@ $result = mysqli_query($conn, $query);
         var sidebar = document.querySelector(".sidebar");
         var sidebarParagraph = sidebar.querySelector("p");
         var sidebarListItems = sidebar.querySelectorAll("li");
-
+        /*Ändrar text färgen till svart ifall lightmode e true*/
         if (element.classList.contains("light-mode")) {
             sidebar.style.color = "black"; 
             if (sidebarParagraph) {
@@ -46,7 +47,7 @@ $result = mysqli_query($conn, $query);
                 item.style.color = "black";
             });
         } else {
-            sidebar.style.color = "";
+            sidebar.style.color = ""; 
             if (sidebarParagraph) {
                 sidebarParagraph.style.color = ""; 
             }
