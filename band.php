@@ -2,8 +2,8 @@
 
 // Databas connection
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
 
 
 
