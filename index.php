@@ -83,8 +83,8 @@ $result = mysqli_query($conn, $query);
 </nav>
 
 <div class="main">
-    
-    <p><strong>Välkommen till vår hemsida!</strong> Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
+    <h1>Välkommen till vår hemsida!</h1>
+    <p> Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
         Oavsett om du är en trogen fan av Lasse Stefanz, Sven-Ingvars, Vikingarna eller bara är nyfiken på att utforska den 
         svenska dansbandskulturen, så har vi något för dig. </p>
 
