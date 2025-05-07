@@ -24,6 +24,7 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 <script>
+    /*Funktion för lightmode*/ 
     function myFunction() {
         var element = document.body;
         element.classList.toggle("light-mode");
@@ -31,11 +32,11 @@ $result = mysqli_query($conn, $query);
         document.querySelector(".navbar").classList.toggle("light-mode");
         document.querySelector(".sidebar").classList.toggle("light-mode");
 
-     
+        // Change text color in the sidebar
         var sidebar = document.querySelector(".sidebar");
         var sidebarParagraph = sidebar.querySelector("p");
         var sidebarListItems = sidebar.querySelectorAll("li");
-
+        /*Ändrar text färgen till svart ifall lightmode e true*/
         if (element.classList.contains("light-mode")) {
             sidebar.style.color = "black"; 
             if (sidebarParagraph) {
@@ -45,7 +46,7 @@ $result = mysqli_query($conn, $query);
                 item.style.color = "black";
             });
         } else {
-            sidebar.style.color = "";
+            sidebar.style.color = ""; 
             if (sidebarParagraph) {
                 sidebarParagraph.style.color = ""; 
             }
@@ -81,8 +82,8 @@ $result = mysqli_query($conn, $query);
 </nav>
 
 <div class="main">
-    
-    <p>Välkommen till vår hemsida! Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
+    <h1>Välkommen till vår hemsida!</h1>
+    <p> Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
         Oavsett om du är en trogen fan av Lasse Stefanz, Sven-Ingvars, Vikingarna eller bara är nyfiken på att utforska den 
         svenska dansbandskulturen, så har vi något för dig. </p>
 
