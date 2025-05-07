@@ -1,11 +1,7 @@
 <?php
-
-// Databas connection
 $servername = "localhost";
-$username = "root";
-$password = "";
-
-
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");

@@ -1,9 +1,8 @@
 <?php
 
-// Databas connection
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
 
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
@@ -32,7 +31,7 @@ $result = mysqli_query($conn, $query);
         document.querySelector(".navbar").classList.toggle("light-mode");
         document.querySelector(".sidebar").classList.toggle("light-mode");
 
-        // Change text color in the sidebar
+     
         var sidebar = document.querySelector(".sidebar");
         var sidebarParagraph = sidebar.querySelector("p");
         var sidebarListItems = sidebar.querySelectorAll("li");
