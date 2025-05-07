@@ -44,8 +44,10 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
 <body>
 
 <nav class="navbar">
-    <a id="sendback" href="index.php">Tillbaka till startsidan</a>
-    
+<?php
+    echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+
+?>
 </nav>
 
 <div class="main">
@@ -65,6 +67,7 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
             <li>Inga hits hittades.</li>
         <?php } ?>
     </ol>
+    
 </div>
 
 <footer>
