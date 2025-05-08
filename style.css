@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(180deg, rgb(65, 65, 65), rgb(179, 187, 241));
+  background: linear-gradient(180deg, rgb(65, 65, 65), rgb(78, 120, 125));
   color: hsl(0, 0%, 100%);
   font-size: 20px;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -7,6 +7,10 @@ body {
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto auto;
   gap: 5px;
+}
+
+h1 {
+  color: goldenrod;
 }
 
 #aboutme {
@@ -67,15 +71,26 @@ body {
   
   
 }
-.sidebar li {
-  color: white;
-  font-size: 20px;
-  font-family:'Times New Roman', Times, serif 
+
+.sidebar h2 {
+  color: goldenrod;
+  font-size: 30px;
+  font-family:'Courier New', Courier, monospace
   
 }
+
+.sidebar li {
+  color: goldenrod;
+  font-size: 23;
+  
+  list-style-type: none;
+  
+}
+
 .sidebar p {
-  font-size: 20px;
-  font-family:'Times New Roman', Times, serif
+  color: goldenrod;
+  font-size: 23px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
