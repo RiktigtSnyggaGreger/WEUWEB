@@ -81,13 +81,14 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
         <li>    
     <div class="dropdown">
     <button class="dropbtn">Meny</button>
-    <div class="dropdown-content">
+    <div class="dropdown-content">            
+        <a id="index" href="index.php">Startsida</a>
             <?php
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $bandId = $row["band_id"];
             $bandName = $row["band_name_sv"];
-            ?><a id="index" href="index.php">Startsida</a><?php
+
             echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
         }
     }

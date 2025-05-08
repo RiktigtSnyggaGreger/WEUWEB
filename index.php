@@ -65,18 +65,18 @@ $homeresult = mysqli_query($conn, $homequery);
     <div class="dropdown">
     <button class="dropbtn">Meny</button>
     <div class="dropdown-content">
+        <a id="index" href="index.php">Startsida</a>
             <?php
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $bandId = $row["band_id"];
             $bandName = $row["band_name_sv"];
-            ?><a id="index" href="index.php">Startsida</a><?php
             echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
-          
+            
         }
     }
             ?>
- 
+            
          </div>
     </div>            
       
@@ -88,16 +88,19 @@ $homeresult = mysqli_query($conn, $homequery);
 
 <div class="main">
 <?php
- if ($homeresult) {
-        while ($row = mysqli_fetch_assoc($homeresult)) {
-            $homeId = $row["home_id"];
-            $hometitle = $row["home_title"];
-            $aboutus = $row["about_us"];
-            echo '<p' . $hometitle . '">' . $aboutus . '</p>';
-        }
+if ($homeresult) {
+    while ($row = mysqli_fetch_assoc($homeresult)) {
+        $homeId = $row["home_id"];
+        $hometitle = $row["home_title"];
+        $aboutus = $row["about_us"];
+        echo '<h1>' . $hometitle . '</h1>';
+        echo '<p>' . $aboutus . '</p>';
     }
+}
 ?>
 </div>
+
+
 
 <img src="img/dansband2.jpg" alt="Dansband">
 
