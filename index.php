@@ -60,30 +60,27 @@ $homeresult = mysqli_query($conn, $homequery);
     }
 </script>
 <nav class="navbar">
-    <ul class="nav-links">
-        <li>    
-    <div class="dropdown">
-    <button class="dropbtn">Meny</button>
-    <div class="dropdown-content">
-        <a id="index" href="index.php">Startsida</a>
-            <?php
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $bandId = $row["band_id"];
-            $bandName = $row["band_name_sv"];
-            echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
-            
-        }
-    }
-            ?>
-            
-         </div>
-    </div>            
-      
-            <button id="darkButton" onclick="myFunction()">Byt färgschema</button> 
-            <a id="aboutme" href="about.html">Om oss</a>    
-        </li>
-    </ul>
+    <div class="left">
+        <div class="dropdown">
+            <button class="dropbtn">Meny</button>
+            <div class="dropdown-content">
+                <a id="index" href="index.php">Startsida</a>
+                <?php
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $bandId = $row["band_id"];
+                        $bandName = $row["band_name_sv"];
+                        echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <button id="darkButton" onclick="myFunction()">Byt färgschema</button>
+        <a id="aboutme" href="about.html">Om oss</a>
+    </div>
 </nav>
 
 <div class="main">
@@ -93,7 +90,6 @@ if ($homeresult) {
         $homeId = $row["home_id"];
         $hometitle = $row["home_title"];
         $aboutus = $row["about_us"];
-        $FunFact = $row["fun_fact"];
         echo '<h1>' . $hometitle . '</h1>';
         echo '<p>' . $aboutus . '</p>';
     }
@@ -108,7 +104,7 @@ if ($homeresult) {
 <div class="sidebar">
     <ol>
         <?php
-        echo '<p>' . $FunFact . '</p>';
+        echo '<p>' . $aboutus . '</p>';
         ?>
     </ol> 
 
