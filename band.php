@@ -88,6 +88,7 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
         while ($row = mysqli_fetch_assoc($result)) {
             $bandId = $row["band_id"];
             $bandName = $row["band_name_sv"];
+            $bandInfo = $row["band_info"];
 
             echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
         }
@@ -107,6 +108,7 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
     <h1><?php echo $band['band_name_sv']; ?></h1>
     <p><?php echo $band['band_name_sv']; ?> - Skapades: <?php echo $band['formation_year']; ?></p>
     <img src="img/<?php echo $band['picture']; ?>" alt="Bandbild">
+    <p> <?php echo $band['band_info']; ?></p>
 </div>
 
 <div class="sidebar">
@@ -124,6 +126,7 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
 </div>
 
 <footer>
+    
     <p>&copy; 2025 DansBandsKungarna. All rights reserved.</p>
 </footer>
 
