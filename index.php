@@ -12,6 +12,9 @@ if ($conn->connect_error) {
 
 $query = "SELECT * FROM bands";
 $result = mysqli_query($conn, $query);
+
+$homequery = "SELECT * FROM home_page";
+$homeresult = mysqli_query($conn, $homequery);
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +70,9 @@ $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             $bandId = $row["band_id"];
             $bandName = $row["band_name_sv"];
+            ?><a id="index" href="index.php">Startsida</a><?php
             echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+          
         }
     }
             ?>
@@ -82,21 +87,16 @@ $result = mysqli_query($conn, $query);
 </nav>
 
 <div class="main">
-    <h1>Välkommen till vår hemsida!</h1>
-    <p> Här har vi samlat allt du behöver veta om Sveriges mest älskade dansband och deras musik. 
-        Oavsett om du är en trogen fan av Lasse Stefanz, Sven-Ingvars, Vikingarna eller bara är nyfiken på att utforska den 
-        svenska dansbandskulturen, så har vi något för dig. </p>
-
-        <p>På vår sida hittar du information om de största banden, deras historia, och deras mest populära låtar. Du kan också 
-        hålla dig uppdaterad med de senaste nyheterna och evenemangen inom dansbandsvärlden. Vi har dessutom en topplista 
-        över de mest populära banden i Sverige just nu, så att du alltid vet vilka som är hetast på dansgolvet.</p>
-
-        <p>Utforska vår meny för att läsa mer om dina favoritband, och glöm inte att kolla in våra bilder och artiklar för att 
-        få en djupare inblick i denna fantastiska musikgenre. Vi hoppas att du kommer att trivas här och att vår hemsida 
-        blir din go-to-plats för allt som rör dansband!</p>
-
-        <p>Tack för att du besöker oss, och vi önskar dig en fantastisk upplevelse!</p>
-    </p>
+<?php
+ if ($homeresult) {
+        while ($row = mysqli_fetch_assoc($homeresult)) {
+            $homeId = $row["home_id"];
+            $hometitle = $row["home_title"];
+            $aboutus = $row["about_us"];
+            echo '<p' . $hometitle . '">' . $aboutus . '</p>';
+        }
+    }
+?>
 </div>
 
 <img src="img/dansband2.jpg" alt="Dansband">

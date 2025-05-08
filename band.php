@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ntigskov_danzuser";
+$password = "N)yrw4(V~%,h";
 
 
 
@@ -16,7 +16,8 @@ if (!isset($_GET['id'])) {
     echo "No band ID provided.";
     exit();
 }
-
+$query = "SELECT * FROM bands";
+$result = mysqli_query($conn, $query);
 $bandId = intval($_GET['id']);
 
 $bandQuery = "SELECT * FROM bands WHERE band_id = $bandId";
@@ -42,12 +43,63 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script>
+    /*Funktion för lightmode*/ 
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("light-mode");
 
+        document.querySelector(".navbar").classList.toggle("light-mode");
+        document.querySelector(".sidebar").classList.toggle("light-mode");
+
+        // Change text color in the sidebar
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarParagraph = sidebar.querySelector("p");
+        var sidebarListItems = sidebar.querySelectorAll("li");
+        /*Ändrar text färgen till svart ifall lightmode e true*/
+        if (element.classList.contains("light-mode")) {
+            sidebar.style.color = "black"; 
+            if (sidebarParagraph) {
+                sidebarParagraph.style.color = "black"; 
+            }
+            sidebarListItems.forEach(function (item) {
+                item.style.color = "black";
+            });
+        } else {
+            sidebar.style.color = ""; 
+            if (sidebarParagraph) {
+                sidebarParagraph.style.color = ""; 
+            }
+            sidebarListItems.forEach(function (item) {
+                item.style.color = ""; 
+            });
+        }
+    }
+</script>
 <nav class="navbar">
-<?php
-    echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
-
-?>
+    <ul class="nav-links">
+        <li>    
+    <div class="dropdown">
+    <button class="dropbtn">Meny</button>
+    <div class="dropdown-content">
+            <?php
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $bandId = $row["band_id"];
+            $bandName = $row["band_name_sv"];
+            ?><a id="index" href="index.php">Startsida</a><?php
+            echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+        }
+    }
+            ?>
+ 
+         </div>
+    </div>            
+      
+            <button id="darkButton" onclick="myFunction()">Byt färgschema</button> 
+            <a id="aboutme" href="about.html">Om oss</a>    
+        </li>
+    </ul>
 </nav>
 
 <div class="main">
