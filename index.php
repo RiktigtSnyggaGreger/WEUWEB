@@ -108,7 +108,7 @@ if ($homeresult) {
 <div class="sidebar">
     <ol>
         <?php
-        echo '<p>' . $aboutus . '</p>';
+        echo '<p>' . $FunFact . '</p>';
         ?>
     </ol> 
 
