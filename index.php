@@ -93,6 +93,7 @@ if ($homeresult) {
         $homeId = $row["home_id"];
         $hometitle = $row["home_title"];
         $aboutus = $row["about_us"];
+        $FunFact = $row["fun_fact"];
         echo '<h1>' . $hometitle . '</h1>';
         echo '<p>' . $aboutus . '</p>';
     }
@@ -106,14 +107,9 @@ if ($homeresult) {
 
 <div class="sidebar">
     <ol>
-        <p>Top Sverige Idag!</p>
-        <li>Lasse Stefanz</li>
-        <li>Sven-Ingvars</li>
-        <li>Vikingarna</li>
-        <li>Arvingarna</li>
-        <li>Flamingo Personerna</li>
-        <li>Dansbandskungen!</li>
-        <li>Nån nobody</li>
+        <?php
+        echo '<p>' . $aboutus . '</p>';
+        ?>
     </ol> 
 
     
