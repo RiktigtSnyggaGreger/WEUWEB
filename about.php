@@ -1,29 +1,42 @@
 <?php
-
 $servername = "localhost";
 $username = "ntigskov_danzuser";
 $password = "N)yrw4(V~%,h";
 
+
+
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
+
 if ($conn->connect_error) {
-    echo("det funka inte");
+    die("Connection failed: " . $conn->connect_error);
 }
 
+if (!isset($_GET['id'])) {
+    echo "No band ID provided.";
+    exit();
+}
 $query = "SELECT * FROM bands";
 $result = mysqli_query($conn, $query);
+$bandId = intval($_GET['id']);
 
-$homequery = "SELECT * FROM home_page";
-$homeresult = mysqli_query($conn, $homequery);
-$band = mysqli_fetch_assoc($result);
+$bandQuery = "SELECT * FROM bands WHERE band_id = $bandId";
+$bandResult = mysqli_query($conn, $bandQuery);
+
+if (!$bandResult || mysqli_num_rows($bandResult) == 0) {
+    echo "Band not found.";
+    exit();
+}
+$band = mysqli_fetch_assoc($bandResult);
+
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Page</title>
+    <title>Om oss</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -84,37 +97,28 @@ $band = mysqli_fetch_assoc($result);
     </div>
 </nav>
 
-<div class="main">
-<?php
-if ($homeresult) {
-    while ($row = mysqli_fetch_assoc($homeresult)) {
-        $homeId = $row["home_id"];
-        $hometitle = $row["home_title"];
-        $aboutus = $row["about_us"];
-        $FunFact = $row["fun_fact"];
-        $FunFact3 = $row["fun_fact2"];
-        $FunFact2 = $row["fun_fact3"];
-        echo '<h1>' . $hometitle . '</h1>';
-        echo '<p>' . $aboutus . '</p>';
-    }
-}
-?>
-</div>
-
-
-
-<img src="img/dansband2.jpg" alt="Dansband">
-
-<div class="sidebar">
-    <ol>
-        <?php 
-           echo $FunFact . '<br>'.'<br>' . $FunFact2 . '<br>'. '<br>'. $FunFact3;
-        ?>
-    </ol> 
-
-    
-</div>
-
-
+    <div>
+        <h3>
+            Vilka är vi?
+        </h3>
+        <h3>Om oss</h3>
+        <p>
+            Vi är ett engagerat och kreativt team som brinner för att skapa fantastiska projekt tillsammans. 
+            Vårt team består av fem unika individer med olika styrkor och färdigheter:
+        </p>
+        <div>
+            <ul>
+                <p><strong>Edwin</strong>: Våran HTML och CSS kodare.</p>
+                <p><strong>Oliver</strong>: våran söta Designexpert samt dansbands proffset</p>
+                <p><strong>Aleksander</strong>: Php, javascript och lite html kodaren</p>
+                <p><strong>Samir</strong>: Han var bara sjuk hela tiden... </p>
+                <p><strong>Kevin</strong>: Databas proffs</p>
+            </ul>
+        </div>
+        <img src="img/tackbild.png" alt="tackbild">
+        <p>
+            Tillsammans kombinerar vi våra styrkor för att skapa något unikt och meningsfullt. Vi tror på samarbete, kreativitet och att ha kul på vägen!
+        </p>
+    </div>
 </body>
 </html>
