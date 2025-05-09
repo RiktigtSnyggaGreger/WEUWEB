@@ -18,21 +18,28 @@ if (!isset($_GET['id'])) {
 }
 $query = "SELECT * FROM bands";
 $result = mysqli_query($conn, $query);
-$bandId = intval($_GET['id']);
+$bandid = intval($_GET['id']);
 
-$bandQuery = "SELECT * FROM bands WHERE band_id = $bandId";
-$bandResult = mysqli_query($conn, $bandQuery);
+$bandquery = "SELECT * FROM bands WHERE band_id = $bandid";
+$bandresult = mysqli_query($conn, $bandquery);
 
-if (!$bandResult || mysqli_num_rows($bandResult) == 0) {
+$homequery = "SELECT * FROM home_page";
+$homeresult = mysqli_query($conn, $homequery);
+$band = mysqli_fetch_assoc($result);
+
+
+
+
+if (!$bandresult || mysqli_num_rows($bandresult) == 0) {
     echo "Band not found.";
     exit();
 }
 
-$band = mysqli_fetch_assoc($bandResult);
+$band = mysqli_fetch_assoc($bandresult);
 
 
-$hitsQuery = "SELECT song_title, release_year FROM top_hits WHERE band_id = $bandId";
-$hitsResult = mysqli_query($conn, $hitsQuery);
+$hitsQuery = "SELECT song_id,song_title, release_year FROM top_hits WHERE band_id = $bandid";
+$hitsresult = mysqli_query($conn, $hitsQuery);
 ?>
 
 <!DOCTYPE html>
@@ -77,26 +84,29 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
     }
 </script>
 <nav class="navbar">
+    <ul>
     <div class="left">
         <div class="dropdown">
             <button class="dropbtn">Meny</button>
             <div class="dropdown-content">
                 <a id="index" href="index.php">Startsida</a>
+                
                 <?php
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $bandId = $row["band_id"];
-                        $bandName = $row["band_name_sv"];
-                        echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+                        $bandid = $row["band_id"];
+                        $bandname = $row["band_name_sv"];
+                        echo '<li><a href="band.php?id=' . $bandid . '">' . $bandname . '</a></li>';
                     }
                 }
                 ?>
+    </ul>
             </div>
         </div>
     </div>
     <div class="right">
         <button id="darkButton" onclick="myFunction()">Byt färgschema</button>
-        <a id="aboutme" href="about.html">Om oss</a>
+        <a id="aboutme" href="about.php">Om oss</a>
     </div>
 </nav>
 
@@ -110,8 +120,8 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
 <div class="sidebar">
     <h2>Top Hits</h2>
     <ol>
-        <?php if (mysqli_num_rows($hitsResult) > 0) { ?>
-            <?php while ($hit = mysqli_fetch_assoc($hitsResult)) { ?>
+        <?php if (mysqli_num_rows($hitsresult) > 0) { ?>
+            <?php while ($hit = mysqli_fetch_assoc($hitsresult)) { ?>
                 <li><?php echo $hit['song_title']; ?> (<?php echo $hit['release_year']; ?>)</li>
             <?php } ?>
         <?php } else { ?>
@@ -122,8 +132,14 @@ $hitsResult = mysqli_query($conn, $hitsQuery);
 </div>
 
 <footer>
-    
-    <p>&copy; 2025 DansBandsKungarna. All rights reserved.</p>
+    <?php
+    if ($homeresult) {
+        while ($row = mysqli_fetch_assoc($homeresult)) {
+            $homefooter = $row["home_footer"];
+        }
+    }
+    echo $homefooter;
+    ?>
 </footer>
 
 </body>

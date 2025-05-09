@@ -61,26 +61,29 @@ $band = mysqli_fetch_assoc($result);
     }
 </script>
 <nav class="navbar">
+    <ul>
     <div class="left">
         <div class="dropdown">
             <button class="dropbtn">Meny</button>
             <div class="dropdown-content">
                 <a id="index" href="index.php">Startsida</a>
+                
                 <?php
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $bandId = $row["band_id"];
-                        $bandName = $row["band_name_sv"];
-                        echo '<a href="band.php?id=' . $bandId . '">' . $bandName . '</a>';
+                        $bandid = $row["band_id"];
+                        $bandname = $row["band_name_sv"];
+                        echo '<li><a href="band.php?id=' . $bandid . '">' . $bandname . '</a></li>';
                     }
                 }
                 ?>
+    </ul>
             </div>
         </div>
     </div>
     <div class="right">
         <button id="darkButton" onclick="myFunction()">Byt färgschema</button>
-        <a id="aboutme" href="about.html">Om oss</a>
+        <a id="aboutme" href="about.php">Om oss</a>
     </div>
 </nav>
 
@@ -88,14 +91,17 @@ $band = mysqli_fetch_assoc($result);
 <?php
 if ($homeresult) {
     while ($row = mysqli_fetch_assoc($homeresult)) {
-        $homeId = $row["home_id"];
+        $homeid = $row["home_id"];
         $hometitle = $row["home_title"];
-        $aboutus = $row["about_us"];
-        $FunFact = $row["fun_fact"];
-        $FunFact3 = $row["fun_fact2"];
-        $FunFact2 = $row["fun_fact3"];
+        $homeheader = $row["home_header"];
+        $funfacttitle = $row["fun_fact_title"];
+        $funfact = $row["fun_fact"];
+        $funfact2 = $row["fun_fact2"];
+        $funfact3 = $row["fun_fact3"];
+        $homefooter = $row["home_footer"];
+
         echo '<h1>' . $hometitle . '</h1>';
-        echo '<p>' . $aboutus . '</p>';
+        echo '<p>' . $homeheader . '</p>';
     }
 }
 ?>
@@ -108,13 +114,17 @@ if ($homeresult) {
 <div class="sidebar">
     <ol>
         <?php 
-           echo $FunFact . '<br>'.'<br>' . $FunFact2 . '<br>'. '<br>'. $FunFact3;
+           echo '<h1>' . $funfacttitle .'</h1>' . $funfact . '<br>'.'<br>' . $funfact2 . '<br>'. '<br>'. $funfact3;
         ?>
     </ol> 
 
     
 </div>
-
+<footer>
+   <?php
+    echo $homefooter;
+    ?>
+</footer>
 
 </body>
 </html>

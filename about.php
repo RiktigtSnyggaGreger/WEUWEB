@@ -1,42 +1,37 @@
 <?php
+
 $servername = "localhost";
 $username = "ntigskov_danzuser";
 $password = "N)yrw4(V~%,h";
 
-
-
 $conn = mysqli_connect($servername, $username, $password);
 mysqli_select_db($conn, "ntigskov_danzos");
-
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    echo("det funka inte");
 }
 
-if (!isset($_GET['id'])) {
-    echo "No band ID provided.";
-    exit();
-}
 $query = "SELECT * FROM bands";
 $result = mysqli_query($conn, $query);
-$bandId = intval($_GET['id']);
 
-$bandQuery = "SELECT * FROM bands WHERE band_id = $bandId";
-$bandResult = mysqli_query($conn, $bandQuery);
+$homequery = "SELECT * FROM home_page";
+$homeresult = mysqli_query($conn, $homequery);
+$band = mysqli_fetch_assoc($result);
 
-if (!$bandResult || mysqli_num_rows($bandResult) == 0) {
-    echo "Band not found.";
-    exit();
-}
-$band = mysqli_fetch_assoc($bandResult);
+$aboutquery = "SELECT * FROM about_us";
+$aboutresult = mysqli_query($conn, $aboutquery);
+$about = mysqli_fetch_assoc($aboutresult);
 
+$creatorquery = "SELECT * FROM creators";
+$creatorresult = mysqli_query($conn, $creatorquery);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Om oss</title>
+    <title>Start Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -93,31 +88,28 @@ $band = mysqli_fetch_assoc($bandResult);
     </div>
     <div class="right">
         <button id="darkButton" onclick="myFunction()">Byt färgschema</button>
-        <a id="aboutme" href="about.html">Om oss</a>
+        <a id="aboutme" href="about.php">Om oss</a>
     </div>
 </nav>
-
-    <div>
+<div>
         <h3>
-            Vilka är vi?
+            <?php echo $about["about_us_header"]; ?>
         </h3>
-        <h3>Om oss</h3>
-        <p>
-            Vi är ett engagerat och kreativt team som brinner för att skapa fantastiska projekt tillsammans. 
-            Vårt team består av fem unika individer med olika styrkor och färdigheter:
-        </p>
+        <p><?php echo $about["about_us_"]; ?></p>
         <div>
             <ul>
-                <p><strong>Edwin</strong>: Våran HTML och CSS kodare.</p>
-                <p><strong>Oliver</strong>: våran söta Designexpert samt dansbands proffset</p>
-                <p><strong>Aleksander</strong>: Php, javascript och lite html kodaren</p>
-                <p><strong>Samir</strong>: Han var bara sjuk hela tiden... </p>
-                <p><strong>Kevin</strong>: Databas proffs</p>
+            <?php
+                if (mysqli_num_rows($creatorresult) > 0) {
+                    while ($creator = mysqli_fetch_assoc($creatorresult)) {
+                        echo "<li><strong>" . $creator['creator_name'] . ":</strong> " . $creator['creator_info'] . "</li>";
+                    }
+                }
+        ?>
             </ul>
         </div>
         <img src="img/tackbild.png" alt="tackbild">
         <p>
-            Tillsammans kombinerar vi våra styrkor för att skapa något unikt och meningsfullt. Vi tror på samarbete, kreativitet och att ha kul på vägen!
+            <?php echo $about["about_us_footer"]; ?>
         </p>
     </div>
 </body>
