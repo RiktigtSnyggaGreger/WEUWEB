@@ -36,7 +36,7 @@ $band = mysqli_fetch_assoc($result);
         document.querySelector(".navbar").classList.toggle("light-mode");
         document.querySelector(".sidebar").classList.toggle("light-mode");
 
-        // Change text color in the sidebar
+        
         var sidebar = document.querySelector(".sidebar");
         var sidebarParagraph = sidebar.querySelector("p");
         var sidebarListItems = sidebar.querySelectorAll("li");
